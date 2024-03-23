@@ -5,7 +5,7 @@ from os.path import isfile, join
 
 class Cleaner :
 
-    def __init__(self, path : str, entensions : Tuple[str, ...]):
+    def __init__(self, path : str, entensions : list[str]):
         self.entensions = entensions 
         self.path = path 
 
@@ -18,6 +18,6 @@ class Cleaner :
         for file in listdir(path):
             if isfile(join(path, file)) :
                 if file.endswith(self.entensions):
-                    remove(file)
+                    remove(join(path, file))
             else :
-                self.deleteFromPath(file)
+                self.deleteFromPath(join(path, file))
